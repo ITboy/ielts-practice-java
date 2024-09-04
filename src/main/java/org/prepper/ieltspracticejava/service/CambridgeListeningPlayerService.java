@@ -11,4 +11,6 @@ public interface CambridgeListeningPlayerService {
     CambridgeListeningArticle findArticle(int bookNum, int testNum, int partNum);
 
     List<CambridgeListeningArticle> findArticles();
+
+    void splitItem(long splitItemId, long nextItemId, long splitTime);
 }

@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: ielts-practice-java
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/ielts_practice
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: prepper
+    password: qwe123
+
+#  datasource:                           # 指定数据源;默认H2建表脚本(根目录/schema-h2.sql);默认H2的insert脚本(classpath:data-h2.sql)
+#    url: jdbc:h2:mem:~/ielts_practice;     # 指定数据库,默认
+#    username: prepper
+#    password: qwe123
+#    driver-class-name: org.h2.Driver
+
+  sql:
+    init:
+      platform: h2
+      #mode: always
+      mode: never
+  h2:
+    console:
+      enabled: false
+      settings:
+        web-allow-others: true
+        trace: false
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    generate-ddl: false
+#    database-platform: org.hibernate.dialect.H2Dialect

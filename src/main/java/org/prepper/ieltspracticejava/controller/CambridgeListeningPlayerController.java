@@ -23,6 +23,12 @@ public class CambridgeListeningPlayerController {
         return cambridgeListeningPlayerService.findArticle(bookNum, testNum, partNum);
     }
 
+    @GetMapping(path = "/cambridge-listening/player/split-item")
+    public String splitItem(@RequestParam Long splitItemId, @RequestParam Long nextItemId, @RequestParam Long splitTime) {
+        cambridgeListeningPlayerService.splitItem(splitItemId, nextItemId, splitTime);
+        return "success";
+    }
+
     @PostMapping(path = "/cambridge-listening/player/save-article")
     public String saveArticle(@RequestParam Integer bookId, @RequestParam Integer testId, @RequestParam Integer partId, @RequestBody String body) {
         cambridgeListeningPlayerService.saveArticle(bookId, testId, partId, body);
