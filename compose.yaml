@@ -1,0 +1,11 @@
+services:
+  mysql:
+    container_name: 'ielts-practice-mysql'
+    image: 'mysql:latest'
+    environment:
+      - 'MYSQL_DATABASE=ielts-practice'
+      - 'MYSQL_PASSWORD=qwe123'
+      - 'MYSQL_ROOT_PASSWORD=qwe123'
+      - 'MYSQL_USER=prepper'
+    ports:
+      - '3306:3306'
