@@ -66,6 +66,21 @@ public class CambridgeListeningPlayerServiceImpl implements CambridgeListeningPl
     }
 
     @Override
+    public void splitItem(long splitItemId, long nextItemId, long splitTime) {
+        org.prepper.ieltspracticejava.dao.entity.CambridgeListeningItem currentItem = cambridgeListeningItemRepository.findById(splitItemId);
+        org.prepper.ieltspracticejava.dao.entity.CambridgeListeningItem nextItem = cambridgeListeningItemRepository.findById(nextItemId);
+
+        org.prepper.ieltspracticejava.dao.entity.CambridgeListeningItem newItem = new org.prepper.ieltspracticejava.dao.entity.CambridgeListeningItem();
+        currentItem.setEndTime(splitTime);
+        newItem.setStartTime(splitTime);
+        newItem.setEndTime(nextItem.getStartTime());
+        newItem.setArticleId(currentItem.getArticleId());
+        newItem.setItemType(CambridgeListeningItemType.INTERLUDE.getValue());
+        cambridgeListeningItemRepository.save(currentItem);
+        cambridgeListeningItemRepository.save(newItem);
+    }
+
+    @Override
     public CambridgeListeningArticle findArticle(int bookNum, int testNum, int partNum) {
         org.prepper.ieltspracticejava.dao.entity.CambridgeListeningArticle  article = cambridgeListeningArticleRepository.findFirstByBookNumAndTestNumAndPartNum(bookNum, testNum, partNum);
         if (Objects.isNull(article)) {
