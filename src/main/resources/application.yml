@@ -3,7 +3,7 @@ spring:
     name: ielts-practice-java
 
   datasource:
-    url: jdbc:mysql://localhost:3306/ielts_practice
+    url: jdbc:mysql://mysql:3306/ielts-practice
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: prepper
     password: qwe123
@@ -31,4 +31,5 @@ spring:
     hibernate:
       ddl-auto: none
     generate-ddl: false
+    database-platform: org.hibernate.dialect.MySQLDialect
 #    database-platform: org.hibernate.dialect.H2Dialect
